@@ -8,7 +8,7 @@ describe('constructer()', function() {
 	it('checking default options', function() {
 		var sender = new ZabbixSender();
 		expect(sender.options).to.be.deep.equal({
-			config : '/etc/zabbix/zabbix_agentd.conf',
+			config : '/etc/zabbix/zabbix_agent2.conf',
 			bin : binLocation,
 			debug : false,
 			logger : ZabbixSender.nullLogger,
@@ -25,7 +25,7 @@ describe('ZabbixSender.send()', function() {
 	var endSpy;
 	var execStub;
 	var ZabbixSenderFakeExec;
-	var expectedDefaultEncodedOptions = ['--config', '/etc/zabbix/zabbix_agentd.conf', '--input-file', '-'];
+	var expectedDefaultEncodedOptions = ['--config', '/etc/zabbix/zabbix_agent2.conf', '--input-file', '-'];
 
 	beforeEach(function() {
 		onSpy = sinon.spy();
@@ -96,7 +96,7 @@ describe('ZabbixSender.send()', function() {
 			expect(execStub).to.be.called.Once;
 			expect(execStub).always.have.been.calledWithExactly(
 					binLocation,
-					['--config', '/etc/zabbix/zabbix_agentd.conf', '--port', 12345, '--input-file', '-'],
+					['--config', '/etc/zabbix/zabbix_agent2.conf', '--port', 12345, '--input-file', '-'],
 					undefined
 					);
 			expect(onSpy).to.be.called.Once;
